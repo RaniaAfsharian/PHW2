@@ -22,3 +22,15 @@ public:
     bool checkWin(char player) const;
 };
 
+class Player
+{
+private:
+    string name;
+    char sign;
+
+public:
+    Player(string name, char sign);
+    void setName(string pname);
+    string getName() const;
+    char getSign() const;
+};

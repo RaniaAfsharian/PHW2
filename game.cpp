@@ -88,3 +88,19 @@ bool Board::checkWin(char player) const
     return false;
 }
 
+Player::Player(string name, char sign) : name(name), sign(sign) {}
+
+void Player::setName(string pname)
+{
+    this->name = pname;
+}
+
+string Player::getName() const
+{
+    return name;
+}
+
+char Player::getSign() const
+{
+    return sign;
+}
