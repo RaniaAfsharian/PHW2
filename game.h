@@ -1,0 +1,24 @@
+#ifndef GAME_H
+#define GAME_H
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Board
+{
+private:
+    char board[3][3]{{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '}};
+    int moveCount = 0;
+
+public:
+    bool isSlotTaken(int row, int col) const;
+    bool isValidMove(int row, int col) const;
+    bool makeMove(int row, int col, char player);
+    bool setAction(int row, int col, char player);
+    bool isFull() const;
+    void drawBoard() const;
+    bool checkWin(char player) const;
+};
+
