@@ -34,3 +34,19 @@ public:
     string getName() const;
     char getSign() const;
 };
+
+class Dooz
+{
+private:
+    Board board;
+    Player player1;
+    Player player2;
+    Player *currentPlayer;
+
+public:
+    Dooz(const Player &p1, const Player &p2);
+    void switchTurn();
+    void startGame();
+};
+
+#endif

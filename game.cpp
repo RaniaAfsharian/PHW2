@@ -104,3 +104,46 @@ char Player::getSign() const
 {
     return sign;
 }
+
+
+
+Dooz::Dooz(const Player &p1, const Player &p2) : player1(p1), player2(p2), currentPlayer(&player1) {}
+
+void Dooz::switchTurn()
+{
+    currentPlayer = (currentPlayer == &player1) ? &player2 : &player1;
+}
+
+void Dooz::startGame()
+{
+    board.drawBoard();
+    while (true)
+    {
+        int row, col;
+        cout << currentPlayer->getName() << " (" << currentPlayer->getSign() << ") - Enter row and column (0-2): ";
+        cin >> row >> col;
+
+        if (!board.isValidMove(row, col))
+        {
+            cout << "Invalid move! Try again." << endl;
+            continue;
+        }
+
+        board.makeMove(row, col, currentPlayer->getSign());
+
+        board.drawBoard();
+
+        if (board.checkWin(currentPlayer->getSign()))
+        {
+            cout << currentPlayer->getName() << " wins!" << endl;
+            break;
+        }
+        else if (board.isFull())
+        {
+            cout << "It's a draw!" << endl;
+            break;
+        }
+
+        switchTurn();
+    }
+}
